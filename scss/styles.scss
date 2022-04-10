@@ -1,0 +1,99 @@
+$color:rgb(122, 45, 223);
+$bgcolor:lighten(black,10%);
+%center-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+$letters:
+circle(5px at 45% 50%) "T" 0s,
+circle(5px at 70% 50%) "R" 0.2s,
+circle(5px at 77% 50%) "O" 0.4s,
+circle(5px at 80% 50%) "J" 0.6s,
+circle(5px at 90% 50%) "A" 0.8s,
+circle(5px at 75% 50%) "N" 1s;
+*{
+    margin:0;
+    padding:0;
+}
+.tsvg{
+    position: fixed;
+    top:0;
+    height: 100vh;
+    width: 100vw;
+    @extend %center-flex;
+    background-color: $bgcolor;
+    svg{
+        path{
+            fill:none;
+            stroke:$color;
+            stroke-width:0.9;
+            stroke-linecap:butt;
+            stroke-linejoin:miter;
+            stroke-opacity:1;
+            stroke-miterlimit:4;
+            stroke-dasharray:none;
+            transition: all 2s ease-in-out, clip-path 0.5s ease-in-out;
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            fill:$color;
+            &.fill{
+                fill:transparent;
+            }
+            @each $circle,$name in $letters {
+                &.#{$name} {
+                    clip-path: $circle;
+                }
+            }
+        }
+        &.animation{
+            & path:not(.fill){
+                animation: letterAnimation 2.5s ease-in-out alternate infinite;
+            }
+            & path.fill{
+                animation: fillAnimation 2.5s ease-in-out alternate infinite;
+                fill:$bgcolor;
+            }
+            @each $circle, $name, $delay in $letters {
+                & path.#{$name} {
+                    clip-path: circle(100%);
+                    animation-delay: $delay;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes letterAnimation{
+    0%{
+        stroke-dashoffset: 0;
+        fill:$color;
+    }
+    40%{
+        stroke-dashoffset: 400;
+        fill:transparent;
+    }
+    80%{
+        stroke-dashoffset: 800;
+        fill:transparent;
+    }
+    100%{
+        stroke-dashoffset: 800;
+        fill:$color;
+    }
+}
+@keyframes fillAnimation{
+    0%{
+        stroke-dashoffset: 0;
+    }
+    40%{
+        stroke-dashoffset: 400;
+    }
+    80%{
+        stroke-dashoffset: 800;
+    }
+    100%{
+        stroke-dashoffset: 800;
+    }
+}

@@ -1,0 +1,119 @@
+.tsvg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.tsvg {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1a1a1a;
+}
+.tsvg svg path {
+  fill: none;
+  stroke: #7a2ddf;
+  stroke-width: 0.9;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-opacity: 1;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+  transition: all 2s ease-in-out, clip-path 0.5s ease-in-out;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  fill: #7a2ddf;
+}
+.tsvg svg path.fill {
+  fill: transparent;
+}
+.tsvg svg path.T {
+  clip-path: circle(5px at 45% 50%);
+}
+.tsvg svg path.R {
+  clip-path: circle(5px at 70% 50%);
+}
+.tsvg svg path.O {
+  clip-path: circle(5px at 77% 50%);
+}
+.tsvg svg path.J {
+  clip-path: circle(5px at 80% 50%);
+}
+.tsvg svg path.A {
+  clip-path: circle(5px at 90% 50%);
+}
+.tsvg svg path.N {
+  clip-path: circle(5px at 75% 50%);
+}
+.tsvg svg.animation path:not(.fill) {
+  animation: letterAnimation 2.5s ease-in-out alternate infinite;
+}
+.tsvg svg.animation path.fill {
+  animation: fillAnimation 2.5s ease-in-out alternate infinite;
+  fill: #1a1a1a;
+}
+.tsvg svg.animation path.T {
+  clip-path: circle(100%);
+  animation-delay: 0s;
+}
+.tsvg svg.animation path.R {
+  clip-path: circle(100%);
+  animation-delay: 0.2s;
+}
+.tsvg svg.animation path.O {
+  clip-path: circle(100%);
+  animation-delay: 0.4s;
+}
+.tsvg svg.animation path.J {
+  clip-path: circle(100%);
+  animation-delay: 0.6s;
+}
+.tsvg svg.animation path.A {
+  clip-path: circle(100%);
+  animation-delay: 0.8s;
+}
+.tsvg svg.animation path.N {
+  clip-path: circle(100%);
+  animation-delay: 1s;
+}
+
+@keyframes letterAnimation {
+  0% {
+    stroke-dashoffset: 0;
+    fill: #7a2ddf;
+  }
+  40% {
+    stroke-dashoffset: 400;
+    fill: transparent;
+  }
+  80% {
+    stroke-dashoffset: 800;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 800;
+    fill: #7a2ddf;
+  }
+}
+@keyframes fillAnimation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  40% {
+    stroke-dashoffset: 400;
+  }
+  80% {
+    stroke-dashoffset: 800;
+  }
+  100% {
+    stroke-dashoffset: 800;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
